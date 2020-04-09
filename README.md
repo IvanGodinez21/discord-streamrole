@@ -56,7 +56,9 @@ NPM Package: https://www.npmjs.com/package/discord-streamrole
 
 
 ## History:  
-
+1.1.7 Updated streaming.js, Some descriptions updated
+1.1.6 Updated LICENSE
+1.1.5 Updated README.md, Some descriptions updated   
 1.1.4 Updated README.md, Some descriptions updated   
 1.1.3 Updated streaming.js, Some descriptions updated   
 1.1.2 Updated streaming.js, Fixed an syntax error   
