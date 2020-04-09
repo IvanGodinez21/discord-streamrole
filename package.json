@@ -1,0 +1,51 @@
+{
+  "_from": "discord-streamrole@^1.1.3",
+  "_id": "discord-streamrole@1.1.4",
+  "_inBundle": false,
+  "_integrity": "sha512-hdicfpYXDsiEKBMUtWYEc0TARFoi4LsoT+DotZ3jr/vVVe9+b+4s1ilcjkAi6d0xgAi6gtgge2xIV1wvonN3BA==",
+  "_location": "/discord-streamrole",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "discord-streamrole@^1.1.3",
+    "name": "discord-streamrole",
+    "escapedName": "discord-streamrole",
+    "rawSpec": "^1.1.3",
+    "saveSpec": null,
+    "fetchSpec": "^1.1.3"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/discord-streamrole/-/discord-streamrole-1.1.4.tgz",
+  "_shasum": "b999d0da0efb14957ce2a6e5342dc27c322c3eb1",
+  "_spec": "discord-streamrole@^1.1.3",
+  "_where": "C:\\Users\\ivano\\Documents\\GitHub\\CLUNKY",
+  "author": {
+    "name": "Jesús Iván Godínez Martínez"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "node-cron": "^1.2.1"
+  },
+  "deprecated": false,
+  "description": "A Discord.js Module that assign a temporary role to streamers when they go live automamatically, it helps to know that someone is streaming",
+  "keywords": [
+    "Discord",
+    "discord.js",
+    "streamers",
+    "streaming",
+    "autorole",
+    "roles"
+  ],
+  "license": "Apache-2.0",
+  "main": "streaming.js",
+  "name": "discord-streamrole",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.1.5"
+}
