@@ -3,15 +3,6 @@
 
 	Author: Jesús Iván Godínez Martínez
 	Github: IvanGodinez21
-
-1.0.0 Initial publish   
-1.0.1 Updated README.md   
-1.0.2 Updated README.md  
-1.1.0 Updated streaming.js, If the streamer have a custom status, the code still working
-1.1.1 Updated streaming.js, Added new console.log lines if is find a problem with a role
-1.1.2 Updated streaming.js, Fixed an syntax error   
-1.1.3 Updated streaming.js, Now the npm library will show   
-1.1.4 Updated README.md, Some descriptions updated   
 */
 
 module.exports = function (bot, options) {
@@ -20,7 +11,7 @@ module.exports = function (bot, options) {
 	const description = {
 		name: `discord-streamrole`,
 		filename: `streaming.js`,
-		version: `1.1.7`
+		version: `1.1.8`
 	}
 	// Add check on startup
 	bot.on("ready", () => {
