@@ -9,7 +9,7 @@
 A module that assign a temporary role to streamers when they go live automamatically, it helps to know that someone is streaming
 
 ## Installation
-You will need [Discord.js](https://discord.js.org/#/) bot setup.
+You will need [Discord.js](https://discord.js.org/#/) v12 bot setup.
 Then use the following command to install the module and it depedencies.
 
 ```
@@ -18,21 +18,29 @@ npm i discord-streamrole
 
 Once you've done this, you can follow the code below to get started!
 
-## Usage
+## Usage for everyone in the discord server
 ```js
 const Streamrole = require("discord-streamrole");
 
 Streamrole(bot, {
-	live :  "LIVE", // you can change LIVE for other role name (Also STREAMER in the next line)
-	required : "STREAMER" // if you want to take action on people of a specific role (remember  adding the comma after "LIVE")
+	live :  "LIVE" // LIVE is the ROL that a live streamer acquires | you can change LIVE for other role name that you want to use
+});
+```
+## Usage for people who has a specific role in the discord server
+```js
+const Streamrole = require("discord-streamrole");
+
+Streamrole(bot, {
+	live :  "LIVE", // LIVE is the ROL that a live streamer acquires | you can change LIVE for other role name that you want to use
+	required : "STREAMER" // STREAMER is the ROL that a live streamer needs to acquiere the LIVE ROL | you can change STREAMER for other role name that you want to use (remember adding the comma after "LIVE")
 });
 ```
 
 ## Warning
 -If you take actions on roles that have duplicate name, the module might get confused   
--If you are using "client" as const, you will need to change that const to "bot"   
 -Remember that the role specified in the code is exctrictly case sensitive   
--The bot needs a role that has to be above of the live role
+-The bot needs a role that has to be above of the live role   
+-If you are using "client" as const, you will need to change that const to "bot"   
 
 ~~const client = new Discord.Client();~~
 ```js
@@ -56,7 +64,13 @@ NPM Package: https://www.npmjs.com/package/discord-streamrole
 
 
 ## History:  
-1.1.8 Added LICENSE file   
+### 2.X.X   
+
+2.0.0 Updated streaming.js, Now works **ONLY** for discord.js v12   
+
+### 1.X.X   
+
+1.1.8 Added LICENSE file & last version using discord.js V11   
 1.1.7 Updated streaming.js, Some descriptions updated   
 1.1.6 Updated LICENSE   
 1.1.5 Updated README.md, Some descriptions updated   
@@ -67,3 +81,4 @@ NPM Package: https://www.npmjs.com/package/discord-streamrole
 1.1.0 Updated streaming.js, If the streamer have a custom status, the code still working   
 1.0.2 Updated README.md, Some descriptions updated   
 1.0.1 Updated README.md, Some descriptions updated   
+1.0.0 Initial publish

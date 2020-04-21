@@ -11,7 +11,7 @@ module.exports = function (bot, options) {
 	const description = {
 		name: `discord-streamrole`,
 		filename: `streaming.js`,
-		version: `1.1.8`
+		version: `2.0.0`
 	}
 	// Add check on startup
 	bot.on("ready", () => {
@@ -29,10 +29,10 @@ module.exports = function (bot, options) {
 		// bot, options
 		if (options && options.live) {
 			// Servers config, will get all the guilds found in the bot
-			var serversSize = bot.guilds.size
+			var serversSize = bot.guilds.cache.size
 			for (x = 0; x < serversSize; x++) {
 				var servers = []
-				var serversGuilds = bot.guilds
+				var serversGuilds = bot.guilds.cache
 				serversGuilds.forEach((server) => servers.push(server))
 				let guild = servers[x];
 				StreamersLive(guild, options)
@@ -45,22 +45,23 @@ module.exports = function (bot, options) {
 		// Check if the bot can manage roles for this guild
 		if (guild.me.hasPermission("MANAGE_ROLES")) {
 			// Loop trough presence to find streamers
-			let presences = guild.presences;
+			let presences = guild.presences.cache;
 			if (presences) {
 				presences.forEach(function (element, key) {
+					//Collect members presences
 					games = []
 					var presence = element.activities
 					presence.forEach(activity => games.push(activity.type))
-					var type = games.find(activity => activity == 1)
+					var type = games.find(activity => activity == 'STREAMING')
 					if (type) {
 						if (typeof (type) != undefined) {
-							if (type == 1) {
+							if (type == 'STREAMING') {
 								// key = userid
-								let member = guild.members.get(key)
+								let member = guild.members.cache.get(key)
 								// Check if the "LIVE" Role exist
-								if (guild.roles.find(val => val.name === options.live)) {
+								if (guild.roles.cache.find(val => val.name === options.live)) {
 									// Check if the position of the "LIVE" role is managable by the bot
-									if (guild.me.highestRole.position >= guild.roles.find(val => val.name === options.live).position) {
+									if (guild.me.roles.highest.position >= guild.roles.cache.find(val => val.name === options.live).position) {
 										// Check if there is a role required ("STREAMER") in the configuration
 										let bypass = false;
 										if (typeof (options.required) === "undefined") {
@@ -68,18 +69,18 @@ module.exports = function (bot, options) {
 											bypass = true;
 										} else {
 											// Check if the required role ("STREAMRS") exist and log an error message if missing
-											if (!guild.roles.find(val => val.name === options.required)) {
+											if (!guild.roles.cache.find(val => val.name === options.required)) {
 												console.log(`${description.name} | REQUIRED Role "${options.required}" doesn't exist on Guild "${guild.name}" (${guild.id})`);
-											} else if (guild.me.highestRole.position <= guild.roles.find(val => val.name === options.required).position) {
+											} else if (guild.me.roles.highest.position <= guild.roles.cache.find(val => val.name === options.required).position) {
 												console.log(`${description.name} | LIVE Role "${options.required}" is higher than the bot highest permission on Guild "${guild.name}" (${guild.id})`);
 											}
 
 										}
-										if (!member.user.bot && (bypass || (member.roles.find(val => val.name === options.required)))) {
+										if (!member.user.bot && (bypass || (member.roles.cache.find(val => val.name === options.required)))) {
 											// Check if the member doesn't already have the "LIVE" role
-											if (!(member.roles.find(val => val.name === options.live))) {												
+											if (!(member.roles.cache.find(val => val.name === options.live))) {												
 												try {
-													member.addRole(guild.roles.find(val => val.name === options.live)).catch(console.error);
+													member.roles.add(guild.roles.cache.find(val => val.name === options.live)).catch(console.error);
 				
 												} catch (err) {
 													console.error(err)
@@ -104,29 +105,30 @@ module.exports = function (bot, options) {
 		// Check if the bot can manage roles for this guild
 		if (guild.me.hasPermission("MANAGE_ROLES")) {
 			// Check if the live role exist
-			if (guild.roles.find(val => val.name === options.live)) {
+			if (guild.roles.cache.find(val => val.name === options.live)) {
 				// Check if the position of the "LIVE" role is managable by the bot
-				if (guild.me.highestRole.position >= guild.roles.find(val => val.name === options.live).position) {
+				if (guild.me.roles.highest.position >= guild.roles.cache.find(val => val.name === options.live).position) {
 					// Loop members of the "LIVE" role
-					let streamers = guild.roles.find(val => val.name === options.live).members
+					let streamers = guild.roles.cache.find(val => val.name === options.live).members
+					//Collect members presences
 					streamers.forEach(function (member, key) {
 						let stillStreaming = 0;
 						games = []
-						let presence = member.guild.presences.get(key);
+						let presence = member.guild.presences.cache.get(key);
 						var activities = presence.activities
 						activities.forEach(activity => games.push(activity.type))
-						var type = games.find(activity => activity == 1)
+						var type = games.find(activity => activity == 'STREAMING')
 						if (presence) {
-							if (presence.game) {
+							if (presence.activities) {
 								if (typeof (type) != undefined) {
-									if (type === 1) {
+									if (type === 'STREAMING') {
 										stillStreaming = 1;
 									}
 								}
 							}
 							if (stillStreaming == 0) {
 								try {
-									member.removeRole(guild.roles.find(val => val.name === options.live)).catch(console.error);
+									member.roles.remove(guild.roles.cache.find(val => val.name === options.live)).catch(console.error);
 
 								} catch (err) {
 									console.error(err)
