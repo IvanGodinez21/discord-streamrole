@@ -11,7 +11,7 @@ module.exports = function (bot, options) {
 	const description = {
 		name: `discord-streamrole`,
 		filename: `streaming.js`,
-		version: `2.0.0`
+		version: `2.0.1`
 	}
 	// Add check on startup
 	bot.on("ready", () => {

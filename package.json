@@ -1,6 +1,6 @@
 {
-  "_from": "discord-streamrole@^2.0.0",
-  "_id": "discord-streamrole@2.0.0",
+  "_from": "discord-streamrole",
+  "_id": "discord-streamrole@2.0.1",
   "_inBundle": false,
   "_integrity": "sha512-hdicfpYXDsiEKBMUtWYEc0TARFoi4LsoT+DotZ3jr/vVVe9+b+4s1ilcjkAi6d0xgAi6gtgge2xIV1wvonN3BA==",
   "_location": "/discord-streamrole",
@@ -8,22 +8,30 @@
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "discord-streamrole@^2.0.0",
+    "raw": "discord-streamrole",
     "name": "discord-streamrole",
     "escapedName": "discord-streamrole",
-    "rawSpec": "^2.0.0",
+    "rawSpec": "",
     "saveSpec": null,
-    "fetchSpec": "^2.0.0"
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/discord-streamrole/-/discord-streamrole-2.0.0.tgz",
+  "_resolved": "https://registry.npmjs.org/discord-streamrole/-/discord-streamrole-2.0.1.tgz",
   "_shasum": "b999d0da0efb14957ce2a6e5342dc27c322c3eb1",
-  "_spec": "discord-streamrole@^2.0.0",
+  "_spec": "discord-streamrole",
   "author": {
     "name": "Jesús Iván Godínez Martínez"
+  },
+  "bugs": {
+    "url": "https://github.com/IvanGodinez21/discord-streamrole/issues"
+  },
+  "homepage": "https://github.com/IvanGodinez21/discord-streamrole#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanGodinez21/discord-streamrole.git"
   },
   "bundleDependencies": false,
   "dependencies": {
@@ -46,5 +54,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "2.0.0"
+  "version": "2.0.1"
 }
