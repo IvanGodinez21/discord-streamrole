@@ -22,7 +22,8 @@ Once you've done this, you can follow the code below to get started!
 const Streamrole = require("discord-streamrole");
 
 Streamrole(bot, {
-	live :  "LIVE" // LIVE is the ROL that a live streamer acquires | you can change LIVE for other role name that you want to use
+	live :  "LIVE", // LIVE is the ROL that a live streamer acquires | you can change LIVE for other role name that you want to use
+	console : true // You can enable or disable the console.log from the package if you want | Use true to enable and use false to disable
 });
 ```
 ## Usage for people who has a specific role in the discord server
@@ -31,7 +32,8 @@ const Streamrole = require("discord-streamrole");
 
 Streamrole(bot, {
 	live :  "LIVE", // LIVE is the ROL that a live streamer acquires | you can change LIVE for other role name that you want to use
-	required : "STREAMER" // STREAMER is the ROL that a live streamer needs to acquiere the LIVE ROL | you can change STREAMER for other role name that you want to use (remember adding the comma after "LIVE")
+	required : "STREAMER", // STREAMER is the ROL that a live streamer needs to acquiere the LIVE ROL | you can change STREAMER for other role name that you want to use (remember adding the comma after "LIVE")
+	console : false // You can enable or disable the console.log from the package if you want | Use true to enable and use false to disable
 });
 ```
 
@@ -39,23 +41,18 @@ Streamrole(bot, {
 -If you take actions on roles that have duplicate name, the module might get confused   
 -Remember that the role specified in the code is exctrictly case sensitive   
 -The bot needs a role that has to be above of the live role   
--If you are using "client" as const, you will need to change that const to "bot"   
-
-~~const client = new Discord.Client();~~
-```js
-const bot = new Discord.Client();
-```
 
 ## Notes
-This module was initialy coded by:  
--Flisher   
--The Bucherons.ca gamers community   
--The Star Citizen Organization "Gardiens du LYS".   
-  
-Links:  
-https://www.npmjs.com/package/discord-streaming   
-https://www.bucherons.ca   
-https://www.gardiensdulys.com   
+-This package is using cron package, assigning the role will take a minute     
+-If you are using "client" as const, maybe you should change that const to "bot"    
+
+```js
+const client = new Discord.Client(); ❌
+```
+```js
+const bot = new Discord.Client(); ✔
+```
+
 
 ## Official links:
 GitHub repository: https://github.com/IvanGodinez21/discord-streamrole   
@@ -64,11 +61,11 @@ NPM Package: https://www.npmjs.com/package/discord-streamrole
 
 ## History:  
 ### 2.X.X   
+2.1.0 Updated streaming.js, added a new option "console", also now require the package ascii-table
 2.0.1 Added links   
 2.0.0 Updated streaming.js, Now works **ONLY** for discord.js v12   
 
 ### 1.X.X   
-
 1.1.8 Added LICENSE file & last version using discord.js V11   
 1.1.7 Updated streaming.js, Some descriptions updated   
 1.1.6 Updated LICENSE   
@@ -80,4 +77,16 @@ NPM Package: https://www.npmjs.com/package/discord-streamrole
 1.1.0 Updated streaming.js, If the streamer have a custom status, the code still working   
 1.0.2 Updated README.md, Some descriptions updated   
 1.0.1 Updated README.md, Some descriptions updated   
-1.0.0 Initial publish
+1.0.0 Initial publish   
+
+
+## Credits
+This module was initialy coded by:  
+-Flisher   
+-The Bucherons.ca gamers community   
+-The Star Citizen Organization "Gardiens du LYS".   
+
+Links:  
+https://www.npmjs.com/package/discord-streaming   
+https://www.bucherons.ca   
+https://www.gardiensdulys.com   

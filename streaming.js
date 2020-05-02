@@ -7,15 +7,21 @@
 
 module.exports = function (bot, options) {
 	const cron = require('node-cron');
+	const ascii = require('ascii-table');
 
 	const description = {
 		name: `discord-streamrole`,
 		filename: `streaming.js`,
-		version: `2.0.1`
+		version: `2.1.0`
 	}
 	// Add check on startup
-	bot.on("ready", () => {
-		console.log(`------------------------------\nModule: ${description.name}\nVersion: ${description.version} \nFrom ("${description.filename}")\n------------------------------`)
+	bot.on('ready', () => {
+		//Create an ascii table
+		let tabledescription = new ascii()
+			.setTitle(description.name)
+			.setHeading('File', 'Version')
+		tabledescription.addRow(description.filename, description.version);
+		console.log(tabledescription.toString())
 		StreamingCheck(bot, options);
 	});
 
@@ -70,18 +76,23 @@ module.exports = function (bot, options) {
 										} else {
 											// Check if the required role ("STREAMRS") exist and log an error message if missing
 											if (!guild.roles.cache.find(val => val.name === options.required)) {
-												console.log(`${description.name} | REQUIRED Role "${options.required}" doesn't exist on Guild "${guild.name}" (${guild.id})`);
+												//Check if console is activated
+												if (options.console == true) {
+													console.log(`${description.name} | REQUIRED Role "${options.required}" doesn't exist on Guild "${guild.name}" (${guild.id})`);
+												}
 											} else if (guild.me.roles.highest.position <= guild.roles.cache.find(val => val.name === options.required).position) {
-												console.log(`${description.name} | LIVE Role "${options.required}" is higher than the bot highest permission on Guild "${guild.name}" (${guild.id})`);
+												//Check if console is activated
+												if (options.console == true) {
+													console.log(`${description.name} | LIVE Role "${options.required}" is higher than the bot highest permission on Guild "${guild.name}" (${guild.id})`);
+												}
 											}
-
 										}
 										if (!member.user.bot && (bypass || (member.roles.cache.find(val => val.name === options.required)))) {
 											// Check if the member doesn't already have the "LIVE" role
-											if (!(member.roles.cache.find(val => val.name === options.live))) {												
+											if (!(member.roles.cache.find(val => val.name === options.live))) {
 												try {
 													member.roles.add(guild.roles.cache.find(val => val.name === options.live)).catch(console.error);
-				
+
 												} catch (err) {
 													console.error(err)
 												}
@@ -89,7 +100,10 @@ module.exports = function (bot, options) {
 										}
 									}
 								} else {
-									console.log(`${description.name} | LIVE Role "${options.live}" doesn't exist on Guild "${guild.name}" (${guild.id})`);
+									//Check if console is activated
+									if (options.console == true) {
+										console.log(`${description.name} | LIVE Role "${options.live}" doesn't exist on Guild "${guild.name}" (${guild.id})`);
+									}
 								}
 							}
 						}
@@ -97,7 +111,10 @@ module.exports = function (bot, options) {
 				});
 			}
 		} else {
-			console.log(`${description.name} | Bot doesn't have "MANAGE_ROLES" permission on Guild "${guild.name}" (${guild.id})`);
+			//Check if console is activated
+			if (options.console == true) {
+				console.log(`${description.name} | Bot doesn't have "MANAGE_ROLES" permission on Guild "${guild.name}" (${guild.id})`);
+			}
 		}
 	}
 
@@ -137,13 +154,22 @@ module.exports = function (bot, options) {
 						}
 					});
 				} else {
-					console.log(`${description.name} | LIVE Role "${options.live}" is higher than the bot highest permission on Guild "${guild.name}" (${guild.id})`);
+					//Check if console is activated
+					if (options.console == true) {
+						console.log(`${description.name} | LIVE Role "${options.live}" is higher than the bot highest permission on Guild "${guild.name}" (${guild.id})`);
+					}
 				}
 			} else {
-				console.log(`${description.name} | LIVE Role "${options.live}" doesn't exist on Guild "${guild.name}" (${guild.id})`);
+				//Check if console is activated
+				if (options.console == true) {
+					console.log(`${description.name} | LIVE Role "${options.live}" doesn't exist on Guild "${guild.name}" (${guild.id})`);
+				}
 			}
 		} else {
-			console.log(`${description.name} | Bot doesn't have "MANAGE_ROLES" permission on Guild "${guild.name}" (${guild.id})`);
+			//Check if console is activated
+			if (options.console == true) {
+				console.log(`${description.name} | Bot doesn't have "MANAGE_ROLES" permission on Guild "${guild.name}" (${guild.id})`);
+			}
 		}
 	}
 }
