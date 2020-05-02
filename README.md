@@ -61,7 +61,7 @@ NPM Package: https://www.npmjs.com/package/discord-streamrole
 
 ## History:  
 ### 2.X.X   
-2.1.0 Updated streaming.js, added a new option "console", also now require the package ascii-table   
+2.1.1 Updated streaming.js, added a new option "console", also now require the package ascii-table   
 2.0.1 Added links   
 2.0.0 Updated streaming.js, Now works **ONLY** for discord.js v12   
 

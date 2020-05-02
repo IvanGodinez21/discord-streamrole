@@ -1,6 +1,6 @@
 {
   "name": "discord-streamrole",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A Discord.js Module that assign a temporary role to streamers when they go live automamatically, it helps to know that someone is streaming",
   "main": "streaming.js",
   "scripts": {
