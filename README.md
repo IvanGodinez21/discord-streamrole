@@ -23,6 +23,7 @@ const Streamrole = require("discord-streamrole");
 
 Streamrole(bot, {
 	live :  "LIVE", // LIVE is the ROL that a live streamer acquires | you can change LIVE for other role name that you want to use
+	event: : true, // You can enable or disable all events listeners from the package, if you disable this you will avoid creating many events listeners in your bot (don't worry, the package will still work) | Use true to enable and use false to disable
 	console : true // You can enable or disable the console.log from the package if you want | Use true to enable and use false to disable
 });
 ```
@@ -33,6 +34,7 @@ const Streamrole = require("discord-streamrole");
 Streamrole(bot, {
 	live :  "LIVE", // LIVE is the ROL that a live streamer acquires | you can change LIVE for other role name that you want to use
 	required : "STREAMER", // STREAMER is the ROL that a live streamer needs to acquiere the LIVE ROL | you can change STREAMER for other role name that you want to use (remember adding the comma after "LIVE")
+	event: : false, // You can enable or disable all events listeners from the package, if you disable this you will avoid creating many events listeners in your bot (don't worry, the package will still work) | Use true to enable and use false to disable
 	console : false // You can enable or disable the console.log from the package if you want | Use true to enable and use false to disable
 });
 ```
@@ -61,6 +63,7 @@ NPM Package: https://www.npmjs.com/package/discord-streamrole
 
 ## History:  
 ### 2.X.X   
+2.1.2 Updated streaming.js, added a new option "event"   
 2.1.1 Updated streaming.js, added a new option "console", also now require the package ascii-table   
 2.0.1 Added links   
 2.0.0 Updated streaming.js, Now works **ONLY** for discord.js v12   

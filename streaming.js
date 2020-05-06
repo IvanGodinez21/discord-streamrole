@@ -12,18 +12,26 @@ module.exports = function (bot, options) {
 	const description = {
 		name: `discord-streamrole`,
 		filename: `streaming.js`,
-		version: `2.1.1`
+		version: `2.1.2`
 	}
 	// Add check on startup
-	bot.on('ready', () => {
-		//Create an ascii table
-		let tabledescription = new ascii()
-			.setTitle(description.name)
-			.setHeading('File', 'Version')
-		tabledescription.addRow(description.filename, description.version);
-		console.log(tabledescription.toString())
-		StreamingCheck(bot, options);
-	});
+	if (options.event == true) {
+		bot.on('ready', () => {
+			//Create an ascii table
+			let tabledescription = new ascii()
+				.setTitle(description.name)
+				.setHeading('File', 'Version', 'Role', 'Required role')
+			var role = options.live
+			if (options.required == undefined) { 
+				var rolerequired = undefined
+			} else {
+				var rolerequired = options.required
+			}
+			tabledescription.addRow(description.filename, description.version, role, rolerequired);
+			console.log(tabledescription.toString())
+			StreamingCheck(bot, options);
+		});
+	}
 
 	// Add a Cron job every minutes
 	let jobStreamingCheck = new cron.schedule('* * * * *', function () {
