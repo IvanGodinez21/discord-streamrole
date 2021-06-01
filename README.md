@@ -2,7 +2,6 @@
 <p align="center">
 <a href="https://www.npmjs.com/package/discord-streamrole"><img src="https://img.shields.io/npm/v/discord-streamrole.svg?maxAge=3600" alt="NPM version" /></a>
 <a href="https://www.npmjs.com/package/discord-streamrole"><img src="https://img.shields.io/npm/dt/discord-streamrole.svg?maxAge=3600" alt="NPM downloads" /></a>
-<p align="center"><a href="https://github.com/sponsors/IvanGodinez21"><img src="https://user-images.githubusercontent.com/1902323/65816833-f3393200-e200-11e9-9006-ff4c77e3a79c.png" height="40" width="100" alt="Sponsors" /></a></p>
 
 # discord-streamrole
 A module that assign a temporary role to streamers when they go live automamatically, it helps to know that someone is streaming
